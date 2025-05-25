@@ -251,8 +251,8 @@ if __name__ == "__main__":
 
     # ===================== CRAWLING DOMAINS =====================
     if selected(3) and (not approval_mode or confirm_step("Crawling Domains")):
-        run_command(f"cat {final_filtered_file} | hakrawler -subs -insecure -u -w > {endpoints_dir}/hakrawler_urls.txt")
-        run_command(f"katana -list {final_filtered_file} -jsl -jc -silent -o {endpoints_dir}/katana_urls.txt")
+        run_command(f"echo https://{domain} | hakrawler -subs -insecure -u -w > {endpoints_dir}/hakrawler_urls.txt")
+        run_command(f"katana -u {domain} -jsl -jc -silent -o {endpoints_dir}/katana_urls.txt")
 
         current_results = set()
         for result_file in ["hakrawler_urls.txt", "katana_urls.txt"]:
@@ -313,3 +313,10 @@ if __name__ == "__main__":
         handle_unique_items(brute_sub_dir, new_total, "merged_results.txt")
 
     print("\n[+] Recon process complete.")
+
+
+
+
+
+
+
